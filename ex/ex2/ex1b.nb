@@ -1,0 +1,310 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8184,        300]
+NotebookOptionsPosition[      7758,        282]
+NotebookOutlinePosition[      8096,        297]
+CellTagsIndexPosition[      8053,        294]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"df", " ", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], "du"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "u"], "dv"}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"du", " ", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "u"}], 
+         RowBox[{"\[PartialD]", "f"}]], ")"}], "v"], "df"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "u"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], "dv"}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"dv", " ", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "v"}], 
+         RowBox[{"\[PartialD]", "f"}]], ")"}], "u"], "df"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "v"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "f"], "du"}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.692449460075453*^9, 3.692449528699499*^9}, {
+  3.692449559212236*^9, 3.6924497439523973`*^9}}],
+
+Cell[TextData[{
+ "=> \ndf = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox[
+          RowBox[{"(", 
+           FractionBox[
+            RowBox[{"\[PartialD]", "u"}], 
+            RowBox[{"\[PartialD]", "f"}]], ")"}], "v"], "df"}], "+", 
+        RowBox[{
+         SubscriptBox[
+          RowBox[{"(", 
+           FractionBox[
+            RowBox[{"\[PartialD]", "u"}], 
+            RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], "dv"}]}], ")"}]}], 
+     "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "u"], "dv"}]}], " ", "=", " ", 
+    
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "u"}], 
+         RowBox[{"\[PartialD]", "f"}]], ")"}], "v"], "df"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "u"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], "dv"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "u"], "dv"}]}]}], 
+   TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.692449760401411*^9, 3.6924498918760557`*^9}}],
+
+Cell[TextData[{
+ "it holds  ->  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "f"}], 
+        RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "u"}], 
+        RowBox[{"\[PartialD]", "f"}]], ")"}], "v"]}], "=", "1"}], 
+   TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.6924498973657103`*^9, 3.6924499637814913`*^9}}],
+
+Cell[TextData[{
+ "=>\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "u"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], "dv"}], "+", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f"}], 
+         RowBox[{"\[PartialD]", "v"}]], ")"}], "u"], "dv"}]}]}], 
+   TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.6924499921827297`*^9, 3.692450011143063*^9}, {
+  3.69245004906359*^9, 3.6924500605518723`*^9}}],
+
+Cell[TextData[{
+ "=>\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "f"}], 
+        RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "u"}], 
+        RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], "dv"}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "f"}], 
+           RowBox[{"\[PartialD]", "v"}]], ")"}], "u"]}], "dv"}], "         ", 
+      "<"}], " ", "=", 
+     RowBox[{
+      RowBox[{">", "       ", 
+       RowBox[{
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "f"}], 
+           RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "u"}], 
+           RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "v"}], 
+           RowBox[{"\[PartialD]", "f"}]], ")"}], "u"], "dv"}]}], "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox[
+          RowBox[{"(", 
+           FractionBox[
+            RowBox[{"\[PartialD]", "f"}], 
+            RowBox[{"\[PartialD]", "v"}]], ")"}], "u"]}], 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "v"}], 
+           RowBox[{"\[PartialD]", "f"}]], ")"}], "u"], "dv"}], "=", "dv", 
+       " "}]}]}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.692450066102318*^9, 3.692450199080489*^9}}],
+
+Cell[TextData[{
+ "=>\n",
+ Cell[BoxData[
+  RowBox[{"  ", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "f"}], 
+        RowBox[{"\[PartialD]", "u"}]], ")"}], "v"], 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "u"}], 
+        RowBox[{"\[PartialD]", "v"}]], ")"}], "f"], 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"\[PartialD]", "v"}], 
+        RowBox[{"\[PartialD]", "f"}]], ")"}], "u"]}], "=", 
+    RowBox[{"-", "1"}]}]}]]]
+}], "Text",
+ CellChangeTimes->{{3.692450207611068*^9, 3.692450255020144*^9}}]
+},
+WindowSize->{1680, 1026},
+WindowMargins->{{Automatic, -349}, {Automatic, -2}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1621, 59, 107, "Text"],
+Cell[2182, 81, 1881, 65, 67, "Text"],
+Cell[4066, 148, 505, 18, 45, "Text"],
+Cell[4574, 168, 758, 26, 64, "Text"],
+Cell[5335, 196, 1768, 59, 64, "Text"],
+Cell[7106, 257, 648, 23, 62, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

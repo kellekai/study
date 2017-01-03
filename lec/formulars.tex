@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath}
+
+\title{Important formulars for StatMech II}
+\author{Kai Keller}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Thermostatics}
+
+\subsection{Equation of State}
+The \textbf{Internal Energy} $U(V,S,N)$ is given in  its differential form by:
+
+\begin{equation}
+dU=-pdV+TdS+\mu dN.
+\end{equation}
+Which yields:
+\begin{equation}
+-p=\left( \frac{dU}{dV} \right)_{S,N}\quad,\quad T=\left( \frac{dU}{dS} \right)_{V,N}\quad,\quad \mu=\left( \frac{dU}{dN} \right)_{V,S}
+\end{equation}
+
+From this we get the differential form of the entropy $S$:
+\begin{equation}
+dS=\frac{1}{T}dU+\frac{p}{T}dV-\frac{\mu}{T}dN.
+\end{equation}
+The Legendre-Transforms for $U$ lead to the other functions of the state:
+\begin{align}
+\textbf{Helmholtz free energy: } & d(U-TS) &= -pdV-SdT+\mu dN \\
+\textbf{Enthalpy: } & d(U+pV) &= +Vdp+TdS+\mu dN \\
+\textbf{Gibbs free energy: } & d(U-TS+pV) &= Vdp-SdT+\mu dN
+\end{align} 
+And finally we have the Gibbs-Duhem relation:
+\begin{equation}
+Nd\mu=Vdp-SdT
+\end{equation}
+
+
+\end{document}

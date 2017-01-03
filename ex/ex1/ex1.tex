@@ -1,0 +1,144 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage[makeroom]{cancel}
+
+\title{Exercise sheet 1}
+\author{Kai Keller}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{problem 1 - Gaussian Integrals}
+\subsection{(a)}
+\begin{equation}\label{eq:stdgauss}
+I=\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}
+\end{equation} 
+The trick is to compute $I^2$ instead of $I$. We get:
+\begin{equation}
+I^2=\int_{-\infty}^{\infty}\,\int_{-\infty}^{\infty}\,dx\,dy\,e^{-\frac{1}{2}(x^2+y^2)}
+\end{equation}
+this we may express in polar choordinates:
+\begin{equation}
+I^2=\int_{0}^{\infty}\,\int_{-\pi}^{\pi}\,dr\,d\theta\,re^{-\frac{1}{2}r^2} = \dots
+\end{equation}
+performing a variable transform from $r^2 \rightarrow u$ and perfoming the integration for $\theta$, we may reduce to:
+\begin{equation}
+I^2=\pi\int_{0}^{\infty}\,dr\,e^{-\frac{1}{2}u} = \dots
+\end{equation}
+the convolution of $e^{au}$ evaluates to $1/ae^{au}$ and we get:
+\begin{equation}\label{eq:exconv}
+I^2=\left. -2\pi e^{-\frac{1}{2}u}\right|_0^{\infty} = 2\pi
+\end{equation}
+and finally:
+\begin{framed}
+\begin{equation}
+I=\sqrt{2\pi}
+\end{equation}
+\end{framed}
+
+\subsection{(b)}
+The steps from above also apply here. We just have to apply the rule used for eq. \ref{eq:exconv}. We will achieve:
+\begin{equation}
+I^2=\left. -(2/a)\pi e^{-\frac{1}{2}u}\right|_0^{\infty} = (2/a)\pi
+\end{equation}
+and finally:
+\begin{framed}
+\begin{equation}
+I=\sqrt{(2/a)\pi}
+\end{equation}
+\end{framed}
+
+\subsection{(c)}
+\paragraph{c.1}
+
+\begin{equation}
+I=\int_{-\infty}^{\infty}\,dx\,xe^{-\frac{x^2}{2}}
+\end{equation} 
+
+performing a variable transform from $(x^2/2) \rightarrow u$ we get:
+\begin{framed}
+\begin{equation}\label{eq:xgauss}
+I=\int_{u(-\infty)}^{u(\infty)}\,du\,e^{-u} = \left. -e^{-u}\right|_\infty^\infty=0
+\end{equation} 
+\end{framed}
+
+\paragraph{c.2}
+\begin{equation}
+I=\int_{-\infty}^{\infty}\,dx\,x^2e^{-\frac{x^2}{2}}
+\end{equation} 
+
+We may write $I$ as:
+\begin{equation}
+I=\int_{-\infty}^{\infty}\,dx\,x \cdot xe^{-\frac{x^2}{2}}
+\end{equation} 
+we may use partial integration:
+\begin{align}
+I&=\left. x \left(\int\,dx\,xe^{-\frac{x^2}{2}}\right)\right|_{-\infty}^\infty+\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}\\
+ &\overset{(\ref{eq:xgauss})}{=}\cancelto{0}{\left.xe^{-\frac{x^2}{2}}\right|_{-\infty}^\infty}+\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}
+\end{align}
+Which simply is the Gaussian integral from eq. \ref{eq:stdgauss}. Hence
+\begin{framed}
+\begin{equation}
+I=\sqrt{2\pi}
+\end{equation}
+\end{framed} 
+
+\subsection{(d)}
+
+\begin{equation}
+I=\int_{-\infty}^\infty\,dx\,e^{-\frac{x^2}{2}-bx}
+\end{equation}
+we will start by completing the square in the exponential function argument: 
+\begin{equation}
+I=\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}(x^2+2bx+b^2)+\frac{1}{2}b^2}=\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}(x+b)^2}\times e^{\frac{1}{2}b^2}
+\end{equation}
+Now we do a variable transform $x+b \rightarrow u$ and we get:
+\begin{framed}
+\begin{equation}
+I=e^{\frac{1}{2}b^2}\times\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}u^2}=e^{\frac{1}{2}b^2}\times \sqrt{2\pi}
+\end{equation}
+\end{framed}
+
+\section{Problem 2}
+\emph{Assumption:} The Grand potential and the internal energy are homogeneous of degree 1.
+\\ ${}$ \\
+\emph{Theorem:} let $f(x_1,\dots,x_k)$ be differantiable and homogeneous of degree $m$:
+\begin{equation}
+f(\lambda x_1,\dots,\lambda x_k)=\lambda^mf(x_1,\dots,x_k)
+\end{equation}
+Then it follows:
+\begin{equation}
+\frac{\partial f}{\partial x_1}x_1+\cdots+\frac{\partial f}{\partial x_k}x_k=mf
+\end{equation}
+\subsection{(a)}
+\emph{show:} $U=TS-PV+\mu N$
+The state of a system, described by the internal energy, is in an equilibrium state, which means, that the state variables are constant. We first apply the Theorem from above to $U(V,S,N)$ and get:
+\begin{equation}
+\frac{\partial U}{\partial V}_{S,N}V+\frac{\partial U}{\partial S}_{V,N}S+\frac{\partial U}{\partial N}_{V,S}N
+\end{equation}
+Now we may replace the partial derivatives and achieve:
+\begin{framed}
+\begin{equation}
+U=-PV+TS+\mu N
+\end{equation}
+\end{framed}
+\emph{show:} $\Omega=-PV$
+We start with the definition of the Grand potential, which is:
+\begin{equation}
+\Omega=U-TS-\mu N
+\end{equation}
+Now we compare the total derivative of the potential to the one of the internal energy:
+\begin{align}
+dU &= -PdV-VdP+TdS+SdT+\mu dN+Nd\mu\\
+d\Omega&=dU-TdS-SdT-\mu dN-Nd\mu=-PdV-VdP
+\end{align}
+From this we can follow, that the potential can only depend on the volume and the pressure.
+\\ ${}$ \\
+DUNNO FURTHER, THINK MORE!!! 
+
+\end{document}
+
+

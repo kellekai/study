@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage[makeroom]{cancel}
+
+\title{Exercise sheet 2}
+\author{Kai Keller}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{problem 1 - Thermodynamic Potentials and State Variables}
+\subsection{(a,2P)}
+\paragraph{show:}
+\begin{equation}
+    \left(\frac{\partial f}{\partial u}\right)_v \, \left(\frac{\partial u}{\partial f}\right)_v = 1 
+\end{equation} 
+we may write:
+\begin{equation}
+    u=f^{-1}\left(f(u)\right)
+\end{equation}
+with that we can write for the differential
+\begin{equation}
+    du=df^{-1}=\left(\frac{\partial f^{-1}}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v\, du=\left(\frac{\partial u}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v\, du
+\end{equation}
+by comparing the l.h.s with the r.h.s we get:
+\begin{framed}
+\begin{equation}
+    \left(\frac{\partial u}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v=1 \quad \qed
+\end{equation}
+\end{framed}
+
+\end{document}
+
+
