@@ -1,3 +1,0 @@
-\contentsline {section}{\numberline {1}problem 1 - Thermodynamic Potentials and State Variables}{1}
-\contentsline {subsection}{\numberline {1.1}(a,2P)}{1}
-\contentsline {paragraph}{show:}{1}

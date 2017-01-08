@@ -1,9 +1,15 @@
 \documentclass[a4paper]{article}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{framed}
 \usepackage[makeroom]{cancel}
+\usepackage{hyperref}
 
-\title{Exercise sheet 1}
+\newcommand{\pd}[3]{\left(\frac{\partial {#1}}{\partial {#2}}\right)_{#3}}
+\newcommand{\pdd}[3]{\left(\frac{\partial^2 {#1}}{\partial {#2}\partial {#3}}\right)}
+
+\title{Exercise sheet 2}
 \author{Kai Keller}
 \date{\today}
 
@@ -11,133 +17,182 @@
 \maketitle
 \tableofcontents
 
-\section{problem 1 - Gaussian Integrals}
-\subsection{(a)}
-\begin{equation}\label{eq:stdgauss}
-I=\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}
+\section{problem 1 - Thermodynamic Potentials and State Variables}
+\subsection{(a, 2P)}
+\paragraph{show:}
+\begin{equation}
+    \left(\frac{\partial f}{\partial u}\right)_v \, \left(\frac{\partial u}{\partial f}\right)_v = 1 
 \end{equation} 
-The trick is to compute $I^2$ instead of $I$. We get:
+we may write:
 \begin{equation}
-I^2=\int_{-\infty}^{\infty}\,\int_{-\infty}^{\infty}\,dx\,dy\,e^{-\frac{1}{2}(x^2+y^2)}
+    u=f^{-1}\left(f(u)\right)
 \end{equation}
-this we may express in polar choordinates:
+with that we can write for the differential
 \begin{equation}
-I^2=\int_{0}^{\infty}\,\int_{-\pi}^{\pi}\,dr\,d\theta\,re^{-\frac{1}{2}r^2} = \dots
+    du=df^{-1}=\left(\frac{\partial f^{-1}}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v\, du=\left(\frac{\partial u}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v\, du
 \end{equation}
-performing a variable transform from $r^2 \rightarrow u$ and perfoming the integration for $\theta$, we may reduce to:
+by comparing the l.h.s with the r.h.s we get:
+\begin{framed}
+    \begin{equation}\label{res:1a}
+    \left(\frac{\partial u}{\partial f}\right)_v\,\left(\frac{\partial f}{\partial u}\right)_v=1 \quad \qed
+\end{equation}
+\end{framed}
+
+\paragraph{show:}
+
 \begin{equation}
-I^2=\pi\int_{0}^{\infty}\,dr\,e^{-\frac{1}{2}u} = \dots
+    \left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial v}\right)_f\left(\frac{\partial v}{\partial f}\right)_u=-1
 \end{equation}
-the convolution of $e^{au}$ evaluates to $1/ae^{au}$ and we get:
-\begin{equation}\label{eq:exconv}
-I^2=\left. -2\pi e^{-\frac{1}{2}u}\right|_0^{\infty} = 2\pi
+
+to start we write down the differential forms of $u$ and $f$:
+\begin{align}
+    df&=\left(\frac{\partial f}{\partial u}\right)_vdu+\left(\frac{\partial f}{\partial v}\right)_udv \\
+    du&=\left(\frac{\partial u}{\partial f}\right)_vdf+\left(\frac{\partial u}{\partial v}\right)_fdv
+\end{align}
+
+Combining these two, we may write:
+\begin{align}
+    df=&\left(\frac{\partial f}{\partial u}\right)_v\left(\left(\frac{\partial u}{\partial f}\right)_vdf+\left(\frac{\partial u}{\partial v}\right)_fdv\right)+\left(\frac{\partial f}{\partial v}\right)_udv \\
+    =&\underbrace{\left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial f}\right)_v}_{=1 \textit{ (from eq. \ref{res:1a})}}df+\left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial v}\right)_fdv+\left(\frac{\partial f}{\partial v}\right)_udv
+\end{align}
+
+Now we can reorder and multiply by $\left(\frac{\partial v}{\partial f}\right)_u$ and we get:
+\begin{align}
+    \left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial v}\right)_fdv&=-\left(\frac{\partial f}{\partial v}\right)_udv\\
+    \left(\frac{\partial v}{\partial f}\right)_u \left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial v}\right)_fdv& = \underbrace{\left(\frac{\partial v}{\partial f}\right)_u \left(\frac{\partial f}{\partial v}\right)_u}_{=1}dv \\
+    &=-1\, dv
+\end{align}
+By comparing the l.h.s. with the r.h.s. we get
+\begin{framed}
+    \begin{equation}
+        \left(\frac{\partial f}{\partial u}\right)_v\left(\frac{\partial u}{\partial v}\right)_f\left(\frac{\partial v}{\partial f}\right)_u=-1 \quad \qed
+    \end{equation}
+\end{framed}
+
+\subsection{(b, 1P)}\label{problem1}
+\paragraph{Relate:}
+
+The isochoric pressure change $\left( \frac{\partial p}{\partial T}  \right)_V$ to the standard response functions:
+\begin{align}
+    \alpha &= \frac{1}{V} \left( \frac{\partial V}{\partial T} \right)_p \label{alpha}\\ 
+    \kappa &= -\frac{1}{V} \left( \frac{\partial V}{\partial p} \right)_T \label{kappat}
+\end{align}
+
+We start writing down the differentials for $p$ and $V$:
+\begin{align}
+    dp&=\left(\frac{\partial p}{\partial V}\right)_TdV+\left(\frac{\partial p}{\partial T}\right)_VdT \\
+    dV&=\left(\frac{\partial V}{\partial p}\right)_Tdp+\left(\frac{\partial V}{\partial T}\right)_pdT
+\end{align}
+By multiplying $dV$ in the differential with $\left(\frac{\partial p}{\partial V}\right)_T$, we can combine $dp$ and $dV$ to:
+\begin{equation}
+    0=\left[ \left(\frac{\partial p}{\partial V}\right)_T\left(\frac{\partial V}{\partial T}\right)_p+\left(\frac{\partial p}{\partial T}\right)_V \right]dT
 \end{equation}
 and finally:
 \begin{framed}
-\begin{equation}
-I=\sqrt{2\pi}
-\end{equation}
+    \begin{equation}
+        \left(\frac{\partial p}{\partial T}\right)_V=-\left(\frac{\partial V}{\partial p}\right)_T^{-1}\left(\frac{\partial V}{\partial T}\right)_p=\frac{\alpha}{\kappa}
+    \end{equation}
 \end{framed}
+\subsection{(c,d 2P)}
+\paragraph{Express:}
+The differential forms of the caloric states $U(p,T)$ and $U(V,T)$, by standard response functions.
 
-\subsection{(b)}
-The steps from above also apply here. We just have to apply the rule used for eq. \ref{eq:exconv}. We will achieve:
-\begin{equation}
-I^2=\left. -(2/a)\pi e^{-\frac{1}{2}u}\right|_0^{\infty} = (2/a)\pi
-\end{equation}
-and finally:
-\begin{framed}
-\begin{equation}
-I=\sqrt{(2/a)\pi}
-\end{equation}
-\end{framed}
-
-\subsection{(c)}
-\paragraph{c.1}
-
-\begin{equation}
-I=\int_{-\infty}^{\infty}\,dx\,xe^{-\frac{x^2}{2}}
-\end{equation} 
-
-performing a variable transform from $(x^2/2) \rightarrow u$ we get:
-\begin{framed}
-\begin{equation}\label{eq:xgauss}
-I=\int_{u(-\infty)}^{u(\infty)}\,du\,e^{-u} = \left. -e^{-u}\right|_\infty^\infty=0
-\end{equation} 
-\end{framed}
-
-\paragraph{c.2}
-\begin{equation}
-I=\int_{-\infty}^{\infty}\,dx\,x^2e^{-\frac{x^2}{2}}
-\end{equation} 
-
-We may write $I$ as:
-\begin{equation}
-I=\int_{-\infty}^{\infty}\,dx\,x \cdot xe^{-\frac{x^2}{2}}
-\end{equation} 
-we may use partial integration:
+We write down the differentials for the caloric states:
 \begin{align}
-I&=\left. x \left(\int\,dx\,xe^{-\frac{x^2}{2}}\right)\right|_{-\infty}^\infty+\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}\\
- &\overset{(\ref{eq:xgauss})}{=}\cancelto{0}{\left.xe^{-\frac{x^2}{2}}\right|_{-\infty}^\infty}+\int_{-\infty}^{\infty}\,dx\,e^{-\frac{x^2}{2}}
+    dU&=\pd{U}{p}{T}dp+\pd{U}{T}{p}dT \label{dupt}\\
+    dU&=\pd{U}{V}{T}dV+\pd{U}{T}{p}dT \label{duvt}
 \end{align}
-Which simply is the Gaussian integral from eq. \ref{eq:stdgauss}. Hence
-\begin{framed}
-\begin{equation}
-I=\sqrt{2\pi}
-\end{equation}
-\end{framed} 
-
-\subsection{(d)}
-
-\begin{equation}
-I=\int_{-\infty}^\infty\,dx\,e^{-\frac{x^2}{2}-bx}
-\end{equation}
-we will start by completing the square in the exponential function argument: 
-\begin{equation}
-I=\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}(x^2+2bx+b^2)+\frac{1}{2}b^2}=\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}(x+b)^2}\times e^{\frac{1}{2}b^2}
-\end{equation}
-Now we do a variable transform $x+b \rightarrow u$ and we get:
-\begin{framed}
-\begin{equation}
-I=e^{\frac{1}{2}b^2}\times\int_{-\infty}^\infty\,dx\,e^{-\frac{1}{2}u^2}=e^{\frac{1}{2}b^2}\times \sqrt{2\pi}
-\end{equation}
-\end{framed}
-
-\section{Problem 2}
-\emph{Assumption:} The Grand potential and the internal energy are homogeneous of degree 1.
-\\ ${}$ \\
-\emph{Theorem:} let $f(x_1,\dots,x_k)$ be differantiable and homogeneous of degree $m$:
-\begin{equation}
-f(\lambda x_1,\dots,\lambda x_k)=\lambda^mf(x_1,\dots,x_k)
-\end{equation}
-Then it follows:
-\begin{equation}
-\frac{\partial f}{\partial x_1}x_1+\cdots+\frac{\partial f}{\partial x_k}x_k=mf
-\end{equation}
-\subsection{(a)}
-\emph{show:} $U=TS-PV+\mu N$
-The state of a system, described by the internal energy, is in an equilibrium state, which means, that the state variables are constant. We first apply the Theorem from above to $U(V,S,N)$ and get:
-\begin{equation}
-\frac{\partial U}{\partial V}_{S,N}V+\frac{\partial U}{\partial S}_{V,N}S+\frac{\partial U}{\partial N}_{V,S}N
-\end{equation}
-Now we may replace the partial derivatives and achieve:
-\begin{framed}
-\begin{equation}
-U=-PV+TS+\mu N
-\end{equation}
-\end{framed}
-\emph{show:} $\Omega=-PV$
-We start with the definition of the Grand potential, which is:
-\begin{equation}
-\Omega=U-TS-\mu N
-\end{equation}
-Now we compare the total derivative of the potential to the one of the internal energy:
+We will use the expression for Gibbs and Helmholtz free energy:
 \begin{align}
-dU &= -PdV-VdP+TdS+SdT+\mu dN+Nd\mu\\
-d\Omega&=dU-TdS-SdT-\mu dN-Nd\mu=-PdV-VdP
+    G=G(p,T)=U-TS+pV=Vdp-SdT \label{gfe} \\
+    F=F(V,T)=U-TS=-pdV-SdT \label{hfe}
 \end{align}
-From this we can follow, that the potential can only depend on the volume and the pressure.
-\\ ${}$ \\
-DUNNO FURTHER, THINK MORE!!! 
+and the Maxwell relation    
+\begin{equation}
+    \pd{S}{V}{T} = \pd{p}{T}{V} \label{mrsvtopt}
+\end{equation}
+This relation holds since:
+\begin{equation}
+    \pd{S}{V}{T}=-\pdd{F}{T}{V}=-\pdd{F}{V}{T}=\pd{p}{T}{V} \quad \qed
+\end{equation}
+We want to express the partial derivatives in eq. \ref{dupt} and \ref{duvt}. 
+\\${}$\\
+\textbf{i:}$\pd{U}{V}{T}$
+\\${}$\\
+$V$ and $T$ are the natural variables of the Helmholtz free energy F. Using eq. \ref{hfe} yields:
+\begin{equation}
+    \pd{F}{V}{T}=\pd{U}{V}{T}-T\pd{S}{V}{T} \quad \text{// $\pd{T}{V}{T}=0$ obviously}
+\end{equation}
+comparing the partial derivatif of $F$ on the l.h.s. with eq. \ref{hfe} and replacing the second term of the r.h.s by its Maxwell relation (eq. \ref{mrsvtopt}), we may write:
+\begin{align}
+    -p &= \pd{U}{V}{T}-T\pd{p}{T}{V} \\
+    \implies \pd{U}{V}{T}&=\underbrace{-p+T\pd{p}{T}{V}}_{\text{for part d}}=-p+T\frac{\alpha}{\kappa_T} \label{pduvt}
+\end{align}
+Where the last step follows from solution of part \ref{problem1}b.
+\\${}$\\
+\textbf{ii:}$\pd{U}{T}{V}$
+\\${}$\\
+We will again use $F$, since we have the same variables as before. Taking the partial derivative yields:
+\begin{equation}
+    \pd{F}{T}{V}=\pd{U}{T}{V}-S-T\pd{S}{T}{V}
+\end{equation}
+Now we want to find an expression for the last term on the r.h.s.. We can infer:
+\begin{equation}
+    \pd{S}{T}{V}=\pd{T}{S}{V}^{-1}=\pdd{U}{S}{S}^{-1}=\frac{1}{T}\theta_V^{-1}
+\end{equation}
+where,
+\begin{equation}
+    \theta_V:=\frac{1}{T}\pdd{U}{S}{S}_V
+\end{equation}
+Comparing the partial derivatif of $F$ on the l.h.s. with eq. \ref{hfe} we may write:
+\begin{equation}
+    \pd{U}{T}{V}=\frac{1}{\theta_V}=C_V \label{pdutv}
+\end{equation}
+\\${}$\\
+\textbf{iii:}$\pd{U}{p}{T}$
+\\${}$\\
+We will look at Gibbs free energy, since $p$ and $T$ are it's natural variables. We may write:
+\begin{equation}
+    \pd{G}{p}{T}=\pd{U}{p}{T}-T\pd{S}{p}{T}+V+p\pd{V}{p}{T}
+\end{equation}
+Using the same strategy as from above, we can easily identify $\pd{G}{p}{T}=V$. The last term is related by eq. \ref{kappat} to the response function $\kappa_T$. So we only have to determine one term. We may write:
+\begin{equation}
+    \pd{S}{p}{T}=-\pdd{G}{T}{p}=-\pdd{G}{p}{T}=-\pd{V}{T}{p}=-V\alpha
+\end{equation}
+Where we applied eq. \ref{alpha} in the last step. Now we have:
+\begin{equation}
+    \pd{U}{p}{T}=(\kappa_Tp-\alpha T)V \label{pdupt}
+\end{equation}
+\\${}$\\
+\textbf{iv:}$\pd{U}{T}{p}$
+\\${}$\\
+Since we have the same variables here as for the case iii, we will look again on the Gibbs free energy:
+\begin{equation}
+    \pd{G}{T}{p}=\pd{U}{T}{p}-S-T\pd{S}{T}{p}+p\pd{V}{T}{p}
+\end{equation}
+Using the same strategies as above, we may immediately write:
+\begin{equation}
+    -S=\pd{U}{T}{p}-S-T\pd{S}{T}{p}+pV\alpha
+\end{equation}
+The last term arises by usage of eq. \ref{alpha}. Let us identify the missing term:
+\begin{equation}
+    \pd{S}{T}{p}=\pd{T}{S}{p}^{-1}=\pdd{U}{S}{S}^{-1}=\frac{1}{T}\theta_p^{-1}
+\end{equation}
+where,
+\begin{equation}
+    \theta_p:=\frac{1}{T}\pdd{U}{S}{S}_p
+\end{equation}
+With this, we have:
+\begin{equation}
+    \pd{U}{T}{p}=\frac{1}{\theta_p}-PV\alpha=C_p-pV\alpha \label{pdutp}
+\end{equation}
+Collecting the expressions for the partial derivatives of $U$ from equations \ref{pduvt}, \ref{pdutv}, \ref{pdupt} and \ref{pdutp}, we may finally write:
+\begin{framed}
+    \begin{align}
+        dU_{V,T}&=\left( T\frac{\alpha}{\kappa_T}-p \right) dV + C_V dT \\
+        dU_{p,T}&=\left( \kappa_T -\alpha T \right) V dp+\left( C_p -pV\alpha  \right) dT
+    \end{align}
+\end{framed}
 
 \end{document}
 
