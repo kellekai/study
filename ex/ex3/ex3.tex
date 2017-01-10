@@ -1,0 +1,96 @@
+\documentclass[a4paper]{article}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage[makeroom]{cancel}
+\usepackage{hyperref}
+
+\newcommand{\pd}[3]{\left(\frac{\partial {#1}}{\partial {#2}}\right)_{#3}}
+\newcommand{\pdd}[3]{\left(\frac{\partial^2 {#1}}{\partial {#2}\partial {#3}}\right)}
+
+\title{Exercise sheet 3}
+\author{Kai Keller}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{problem 1 - Weiss-Curie Ferromagnetism}
+Consider a System with the following Hamiltonian:
+\begin{equation}
+    H(s)=-\frac{J}{2N}\sum_i\sum_j s_i s_j -h\sum_i s_i \label{wchamiltonian}
+\end{equation}
+
+\subsection{(a, 2P)}
+\paragraph{show:}
+
+That its Partition function can be written as:
+\begin{equation}\label{partitionfunction}
+  Z(\beta,J,h)=\sqrt{\frac{N\beta J}{2 \pi}}\,\int_{-\infty}^{+\infty}\,dx\,e^{-N\beta Jx^2/2}\,C(x)
+\end{equation} 
+With:
+\begin{equation}
+    C(x)=\prod\limits_i\,\sum_{\{s_i\}}\,e^{\beta s_i(Jx+h)} \label{cvonx}
+\end{equation}
+Let's consider first the general case of the summation done in eq. \ref{cvonx}:
+\begin{equation}
+    \Omega=\prod\limits_i\,\sum_{s_{i[,j]}}\,f(s_{i[,j]})
+\end{equation}
+Where the index $j=1,\dots,M$ runs over the members of the configuration $s_i$, $i=1,\dots,N$. We may expand the expression to:
+\begin{align}
+    \Omega&=\prod\limits_i\,(f(s_{i[,1]})+\dots+f(s_{i[,M]})) \\
+    &=(f(s_{1[,1]})+\dots+f(s_{1[,M]}))\times\dots\times(f(s_{N[,1]})+\dots+f(s_{N[,M])})
+\end{align}
+Which can be reordered to:
+\begin{align}
+    \Omega&=(f(s_{1[,1]}) \dots f(s_{N[,1]}))+\dots +(f(s_{1[,M]}) \dots f(s_{N[,M]})) \\
+    &=\prod\limits_i f(s_{i[,1]})+\dots +\prod\limits_i f(s_{i[,M]})
+\end{align}
+Where the last expression corresponds to a sum over all possible configurations. Hence we may write:
+\begin{equation}
+    \Omega=\prod\limits_i\,\sum_{s_{i[,j]}}\,f(s_{i[,j]})=\sum_{\{\vec{s}\}}\,\prod\limits_i\,f(s_{i[,j]})
+\end{equation}
+Using this, we may write eq. \ref{partitionfunction} as:
+\begin{align}
+    Z(\beta,J,h)&=\sum_{\{\vec{s}\}}\sqrt{\frac{N\beta J}{2 \pi}}\,\int_{-\infty}^{+\infty}\,dx\,e^{-N\beta Jx^2/2}\,\prod\limits_i\,e^{\beta s_i(Jx+h)} \\
+    &=\sum_{\{\vec{s}\}}\sqrt{\frac{N\beta J}{2 \pi}}\,\int_{-\infty}^{+\infty}\,dx\,e^{-N\beta Jx^2/2}\,e^{\beta (\sum_i\,s_iJx+\sum_i s_i h)}\\
+    &=\sum_{\{\vec{s}\}}\sqrt{\frac{N\beta J}{2 \pi}}\,e^{\beta\sum_i s_i h}\int_{-\infty}^{+\infty}\,dx\,e^{-N\beta Jx^2/2}\,e^{\beta J\sum_i\,s_ix}
+\end{align}
+We perform a variable ransform $y=\sqrt{N\beta J}x\implies dx=dy/\sqrt{N\beta J}$. Now we may write:
+\begin{equation}
+    Z(\beta,J,h)=\sum_{\{\vec{s}\}}\sqrt{\frac{1}{2 \pi}}\,e^{\beta\sum_i s_i h}\int_{-\infty}^{+\infty}\,dx\,e^{-y^2/2-by}
+\end{equation}
+with:
+\begin{align}
+    b&=-\frac{\beta J}{\sqrt{N\beta J}}\sum_i\,s_i \\
+    b^2&=\frac{\beta J}{N}\sum_i\,\sum_j\,s_i s_j
+\end{align}
+This is a general form of a gaussian integral with solution:
+\begin{equation}
+    \int_{-\infty}^{+\infty}\,dx\,e^{-y^2/2-by}=\sqrt{2 \pi}\,e^{b^2/2}
+\end{equation}
+This leads to:
+\begin{align}
+    Z(\beta,J,h)&=\sum_{\{\vec{s}\}}\,e^{\beta\sum_i s_i h+\frac{\beta J}{N}\sum_i\,\sum_j\,s_i s_j} \\
+    &=\sum_{\{\vec{s}\}}\,e^{-\beta H(s)}
+\end{align}
+which is precisely the definition of the partition function.
+
+\subsection{(a, 2P)}
+\paragraph{Compute:}
+
+$C(x)$ explicitely.
+
+We have only 2 posible values for each $s_i$. We hence have:
+\begin{align}
+    C(x)&=\prod\limits_i\,\left( e^{\beta (Jx+h)} + e^{-\beta (Jx+h)} \right) \\
+    &=\prod\limits_i\,2 \sin{(\beta (Jx+h))} \\
+    &=\sinh{(\beta (Jx+h))}^N
+\end{align}
+
+\end{document}
+
+

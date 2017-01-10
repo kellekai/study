@@ -1,0 +1,96 @@
+\documentclass[a4paper]{article}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage[makeroom]{cancel}
+\usepackage{hyperref}
+
+\newcommand{\pd}[3]{\left(\frac{\partial {#1}}{\partial {#2}}\right)_{#3}}
+\newcommand{\pdd}[3]{\left(\frac{\partial^2 {#1}}{\partial {#2}\partial {#3}}\right)}
+
+\title{Exercise sheet 3}
+\author{Kai Keller}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{problem 1 - Einstein relations}
+\paragraph{(a) compute:}
+The fluctuation parameter matrix:
+\begin{equation}
+    \mathbf{g}=
+    \begin{pmatrix}
+        g_{UU} & g_{UV} \\
+        g_{UV} & g_{VV}
+    \end{pmatrix}
+\end{equation}
+
+and
+\paragraph{(b) show:}
+The following relations:
+\begin{align}
+    \pd{T}{V}{U}&=\frac{1}{C_V}\left( \frac{\alpha}{\kappa_T}T-p  \right) \\
+    \pd{p}{V}{U}&=-\frac{1}{\kappa_TV}+\frac{\alpha}{\kappa_TC_V}\left( \frac{\alpha}{\kappa_T}T-p  \right)
+    \label{second}
+\end{align}
+
+\paragraph{(a)}
+
+To compute $g_{UU}$, we use the relation from the lecture:
+\begin{align}
+    g_{UU}&=-\pd{}{U}{V}\pd{}{U}{V} S(U,V) \\
+          &=-\pd{}{U}{V}\pd{S}{U}{V} \\
+          &=-\pd{}{U}{V}T^{-1} \\
+          &=\frac{1}{T^2}\pd{T}{U}{V} \\
+          &=\frac{1}{C_VT^2}
+\end{align}
+Where we used the differential of $S$:
+\begin{align}
+    dS&=\pd{S}{U}{V}dU+\pd{S}{U}{V}dV \\
+    &=\frac{1}{T}dU+\frac{p}{T}dV
+\end{align}
+and the definition of the isochoric heat capacity $C_V=\pd{U}{T}{V}$.
+We will proceed analog for the other cases:
+\begin{align}
+    g_{UV}&=-\pd{}{U}{V}\pd{}{V}{U}S \\
+          &=-\pd{}{V}{U}\pd{S}{U}{V} \\
+          &=\frac{1}{T^2}\pd{T}{V}{U} \\
+          &=\frac{1}{T^2C_V}\left( \frac{\alpha}{\kappa_T}T-p  \right)
+\end{align}
+And finally
+\begin{align}
+    g_{VV}&=-\pd{}{V}{U}\pd{}{V}{U}S \\
+          &=-\pd{}{V}{U}\pd{S}{V}{U} \\
+          &=-\pd{}{V}{U}\frac{p}{T} \\
+          &=-\frac{1}{T}\pd{p}{V}{U}+\frac{p}{T^2}\pd{T}{V}{U} \\
+          &=\frac{1}{\kappa_TVT}-\frac{\alpha}{\kappa_TC_V}\left( \frac{\alpha}{\kappa_T}T-p  \right)+\frac{p}{T^2C_V}\left( \frac{\alpha}{\kappa_T}T-p  \right) \\
+          &=\frac{1}{\kappa_TVT}+\frac{1}{C_V}\left( \frac{p}{T^2}-\frac{\alpha}{\kappa_T} \right)\left( \frac{\alpha}{\kappa_T}T-p  \right)
+\end{align}
+
+\paragraph{(b)}
+We use the relation for $dU$ derived in exercise sheet 1, problem 1c (eq. 42):
+\begin{equation}
+    dU_{V,T}=\left( T\frac{\alpha}{\kappa_T}-p \right) dV + C_V dT \label{duvt}
+\end{equation}
+we want to find $\pd{T}{V}{U}$. From eq. \ref{duvt} we get for $dU=0$,
+\begin{align}
+     \left( \frac{\alpha}{\kappa_T}T-p  \right)dV&=C_V dT \\
+      \Rightarrow \left. \frac{dT}{dV}\right|_{U=\text{const}}&=\pd{T}{V}{U}=\frac{1}{C_V}\left( \frac{\alpha}{\kappa_T}T-p  \right)
+\end{align}
+To show eq. \ref{second}, we use the relation $\pd{F}{V}{T}=-p$. With this we may write:
+\begin{align}
+    \pd{p}{V}{U}&=-\pd{}{V}{U}\pd{}{V}{T}F \\
+    &=-\pd{}{V}{T}\pd{}{V}{U}U+\pd{}{V}{T}\pd{}{V}{U}(TS) \\
+    &=\pd{}{V}{T}\left( S\pd{T}{V}{U}+T\pd{S}{V}{U}  \right) \\
+    &=\pd{S}{V}{T}\pd{T}{V}{U}+\pd{p}{V}{T} \\
+    &=\pd{p}{T}{V}\pd{T}{V}{U}+\pd{V}{p}{T}^{-1} \\
+    &=\frac{\alpha}{\kappa_T}\frac{1}{C_V}\left(\frac{\alpha}{\kappa_T}T-p\right)-\frac{1}{V\kappa_T}
+\end{align}
+
+\end{document}
+
+

@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}problem 1 - Einstein relations}{1}{section.1}
+\contentsline {paragraph}{(a) compute:}{1}{section*.2}
+\contentsline {paragraph}{(b) show:}{1}{section*.3}
+\contentsline {paragraph}{(a)}{1}{section*.4}
+\contentsline {paragraph}{(b)}{2}{section*.5}
